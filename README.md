@@ -25,12 +25,33 @@ Hubspot.Contacts.all([count: 10, vidOffset: 100]) |> Hubspot.request
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add hubspotex to your list of dependencies in `mix.exs`:
+To install the released version [available in Hex](https://hex.pm/docs/publish), the package can be installed by adding hubspotex to your list of dependencies in `mix.exs`:
 
   ```elixir
   def deps do
     [{:hubspotex, "~> 0.0.6"}]
   end
+  ```
+
+To install the latest master from a github branch, the package can be installed by adding hubspotex to your list of dependencies in `mix.exs`:
+
+  ```elixir
+  def deps do
+    [{:hubspotex, github: "tmaszk/hubspotex" }]
+  end
+  ```
+
+## Config
+
+
+Configure your credentials in `config.exs`, `prod.exs`, or `runtime.exs` depending on your deployment method.  Get the values from [HubSpot account](https://app.hubspot.com/myaccounts).
+
+  ```elixir
+  import Config
+
+  config :hubspotex, auth_method: "hapikey" # "hapikey" or "token"
+  config :hubspotex, auth_key: "demo"
+  config :hubspotex, portal_id: "62515"
+  config :hubspotex, username: "testapi@hubspot.com"
+  config :hubspotex, password: "HubSpot"
   ```
