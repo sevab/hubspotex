@@ -44,9 +44,11 @@ defmodule Hubspot.HTTP.Client do
 
   def process_request_body(""), do: ""
   def process_request_body(body) do
+    body |> Jason.encode!
   end
 
   def process_response_body(""), do: nil
   def process_response_body(body) do
+    body |> Jason.decode!
   end
 end
