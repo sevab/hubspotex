@@ -24,12 +24,16 @@ defmodule Hubspot.HTTP.Client do
   """
   def request(method, url, body \\ "", headers \\ [], params \\ []) do
     options = params |> process_request_options
-    headers = headers |> add_auth
+    headers = headers |> add_auth |> add_content_type
     super(method, url, body, headers, options)
   end
 
   defp add_auth(query) do
     [{"Authorization", "Bearer #{get_env(:hubspotex, :auth_key)}"} | query]
+  end
+
+  defp add_content_type(query) do
+    [{"content-type", "application/json"} | query]
   end
 
   def process_url(url = "http" <> _), do: url
