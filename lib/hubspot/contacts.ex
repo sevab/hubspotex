@@ -75,8 +75,8 @@ defmodule Hubspot.Contacts do
       %Hubspot.HTTP.Request{endpoint: "/contacts/v1/contact/createOrUpdate/email/test@hubspot.com",
         method: :post, query: [], body: [properties: [name: "first_name", value: "Fred"]]}
   """
-  @spec create_or_update(String.t, list) :: %Hubspot.HTTP.Request{}
-  def create_or_update(email, properties \\ "") do
+  @spec create_or_update(String.t, any()) :: %Hubspot.HTTP.Request{}
+  def create_or_update(email, properties) do
     %Hubspot.HTTP.Request{
       endpoint: "/contacts/v1/contact/createOrUpdate/email/#{email}",
       method: :post,
